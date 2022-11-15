@@ -36,5 +36,6 @@ while playing:
             column -= 1
             match_field[row][column] = "🟢"
             player1 = not player1
+            os.system("cls")
         else:
             print("Introduzca una coordenada valida")
