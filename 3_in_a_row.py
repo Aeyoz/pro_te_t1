@@ -10,6 +10,25 @@ for i in range(3):
     for j in range(3):
         match_field[i].append("🔳")
 
+match match_field:
+    case match_field if match_field[0][0] == match_field[1][1] and match_field[1][1] == match_field[2][2]:
+        if match_field[0][0] == "❌":
+            winner = "player1"
+        else:
+            winner = "player2"
+    case match_field if match_field[0][0] == match_field[1][0] and match_field[1][0] == match_field[2][0]:
+        if match_field[0][0] == "❌":
+            winner = "player1"
+        else:
+            winner = "player2"
+    case match_field if match_field[0][0] == match_field[0][1] and match_field[0][1] == match_field[0][2]:
+        if match_field[0][0] == "❌":
+            winner = "player1"
+        else:
+            winner = "player2"
+    case _:
+        print("No one is the winner")
+
 while moves < 9:
     for row in match_field:
         for column in row:
@@ -39,22 +58,3 @@ while moves < 9:
             moves += 1
         else:
             print("Introduzca una coordenada valida")
-
-match match_field:
-    case match_field if match_field[0][0] == match_field[1][1] and match_field[1][1] == match_field[2][2]:
-        if match_field[0][0] == "❌":
-            winner = "player1"
-        else:
-            winner = "player2"
-    case match_field if match_field[0][0] == match_field[1][0] and match_field[1][0] == match_field[2][0]:
-        if match_field[0][0] == "❌":
-            winner = "player1"
-        else:
-            winner = "player2"
-    case match_field if match_field[0][0] == match_field[0][1] and match_field[0][1] == match_field[0][2]:
-        if match_field[0][0] == "❌":
-            winner = "player1"
-        else:
-            winner = "player2"
-    case _:
-        print("No one is the winner")
