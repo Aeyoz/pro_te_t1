@@ -42,28 +42,29 @@ while True:
                 playing = False if "🔳" not in match_field else True
             else:
                 print("Introduzca una coordenada valida")
-    match match_field:
-        case match_field if match_field[0][0] == match_field[1][1] and match_field[1][1] == match_field[2][2]:
-            if match_field[0][0] == "❌":
+    for row in match_field:
+        if row[0] == row[1] and row[1] == row[2]:
+            if row[0] == "❌":
                 winner = "player1"
-                break
-            elif match_field[0][0] == "🟢":
+            else:
                 winner = "player2"
-                break
-        case match_field if match_field[0][0] == match_field[1][0] and match_field[1][0] == match_field[2][0]:
-            if match_field[0][0] == "❌":
+        for column in row:
+            if row[column] == row[column] == row[column]:
+                if row[column] == "":
+                    winner = "player1"
+                else:
+                    winner = "player2"
+    else:
+        if match_field[0][0] == match_field[1][1] and match_field[1][1] == match_field[2][2]:
+            if row[0] == "❌":
                 winner = "player1"
-                break
-            elif match_field[0][0] == "🟢":
+            else:
                 winner = "player2"
-                break
-        case match_field if match_field[0][0] == match_field[0][1] and match_field[0][1] == match_field[0][2]:
-            if match_field[0][0] == "❌":
+        if match_field[2][0] == match_field[1][1] and match_field[1][1] == match_field[0][2]:
+            if row[0] == "❌":
                 winner = "player1"
-                break
-            elif match_field[0][0] == "🟢":
+            else:
                 winner = "player2"
-                break
-        case _:
-            print("Its a tie!")
+        break
+    
 print(f"And the winner is: {winner}")

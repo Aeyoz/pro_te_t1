@@ -11,7 +11,6 @@ for i in range(3):
         match_field[i].append("🔳")
 
 while turn:
-
     while True:
         for row in match_field:
             for column in row:
