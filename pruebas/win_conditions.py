@@ -1,7 +1,7 @@
 # Jugador 1: ❌
 # Jugador 2: 🟢
 match_field = [["🔳","🔳","🔳"],["🔳","🔳","🔳"],["🔳","🔳","🔳"]]
-turn = True
+turn = False
 playing = True
 player1 = True
 
@@ -10,23 +10,30 @@ while playing:
         for element in box:
             print(element, end=" ")
         print()
+    turn = not turn
     while turn:
         if player1:
             user_input = input("Player1, please introduce the coordenates separated by coma: ").split(",")
-            row = int(user_input[0]) - 1
-            column = int(user_input[1]) - 1
-            if 1 <= row and column <= 3 and "🔳" not in match_field[row][column]:
+            row = int(user_input[0])
+            column = int(user_input[1])
+            if 1 <= row and column <= 3 and "🔳" == match_field[row - 1][column - 1]:
+                row -= 1
+                column -= 1
                 match_field[row][column] = "❌"
-            player1 = not player1
-            turn = not turn
+                player1 = not player1
+            else:
+                print("Wrong coordenate, introduce a valid one")
         else:
             user_input = input("Player2, please introduce the coordenates separated by coma: ").split(",")
-            row = int(user_input[0]) - 1
-            column = int(user_input[1]) - 1
-            if 1 <= row and column <= 3 and "🔳" not in match_field[row][column]:
-                match_field[row][column] = "❌"
-            player1 = not player1
-            turn = not turn
+            row = int(user_input[0])
+            column = int(user_input[1])
+            if 1 <= row and column <= 3 and "🔳" == match_field[row - 1][column - 1]:
+                row -= 1
+                column -= 1 
+                match_field[row][column] = "🟢"
+                player1 = not player1
+            else:
+                print("Wrong coordenate, introduce a valid one")
     match match_field:
             case match_field if match_field[0][0] == match_field[1][1] and match_field[1][1] == match_field[2][2]:    # Diagonal
                 if match_field[0][0] == "❌":
