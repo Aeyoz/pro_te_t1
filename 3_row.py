@@ -11,7 +11,7 @@ while playing:
             print(column, end=" ")
         print()
     if player1:
-        user_input = input("Player 1 introduce the coordenates of which box you'd want your mark to be drawn, separated by a coma: ").split(",")
+        user_input = input("Player 1 choice (Ej: 3,1): ").split(",")
         row = int(user_input[0])
         column = int(user_input[1])
         if 1 <= row and column <= 3 and board[row - 1][column - 1] == "🔳":
@@ -20,9 +20,9 @@ while playing:
             player1 = not player1
             moves += 1
         else:
-            print("Introduzca una coordenada valida")
+            print("Introduce a valid coordenate")
     else:
-        user_input = input("Player 2 introduce the coordenates of which box you'd want your mark to be drawn, separated by a coma: ").split(",")
+        user_input = input("Player 2 choice (Ej: 1,1): ").split(",")
         row = int(user_input[0])
         column = int(user_input[1])
         if 1 <= row and column <= 3 and board[row - 1][column - 1] == "🔳":
@@ -31,9 +31,9 @@ while playing:
             player1 = not player1
             moves += 1
         else:
-            print("Introduzca una coordenada valida")
+            print("Introduce a valid coordenate")
     for row in board:
-        if row[0] == row[1] == row[2]:                                        # Horizontal
+        if row[0] == row[1] == row[2]:                                                  # Horizontal
             if "🔳" != row[0] == "❌":
                 winner = "player1"
                 playing = False
@@ -59,7 +59,7 @@ while playing:
                 winner = "player2"
                 playing = False
             break
-        elif board[2][0] == board[1][1] and board[1][1] == board[0][2]:            # Inversed diagonal
+        elif board[2][0] == board[1][1] and board[1][1] == board[0][2]:                  # Inversed diagonal
             if "🔳" != row[index] == "❌":
                 winner = "player1"
                 playing = False
