@@ -12,10 +12,10 @@ while playing:
             print(column, end=" ")
         print()
     play = input(f"{player} choice (Ej: 3,1): ").split(",")
-    row = int(play[0])
-    column = int(play[1])
-    if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] == "🔳":
-        row -= 1; column -= 1; moves += 1
+    row = int(play[0]) - 1
+    column = int(play[1]) - 1
+    if 0 <= row <= 2 and 0 <= column <= 2 and board[row - 1][column - 1] == "🔳":
+        moves += 1
         if player == "Player 1":
             board[row][column] = "❌"
             player = "Player 2"
