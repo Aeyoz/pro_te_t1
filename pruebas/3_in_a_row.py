@@ -14,7 +14,7 @@ while playing:
     play = input(f"{player} choice (Ej: 3,1): ").split(",")
     row = int(play[0])
     column = int(play[1])
-    if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] == "🔳":
+    if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] == "🔳" and len(play) == 2:
         row -= 1; column -= 1; moves += 1
         if player == "Player 1":
             board[row][column] = "❌"
