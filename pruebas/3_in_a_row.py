@@ -26,18 +26,9 @@ while playing:
             last_move = "player 2"
     else:
         print("Please introduce a valid coordenate")    
-    horizontal1 = board[0][0] == board[0][1] == board[0][2] != "🔳"
-    horizontal2 = board[1][0] == board[1][1] == board[1][2] != "🔳" 
-    horizontal3 = board[2][0] == board[2][1] == board[2][2] != "🔳" 
-    horizontals = any([horizontal1,horizontal2,horizontal3])
-    diagonal = board[0][0] == board[1][1] == board[2][2] != "🔳"
-    i_diagonal = board[2][0] == board[1][1] == board[0][2] != "🔳"
-    diagonals = any([diagonal,i_diagonal])
-    vertical1 = board[0][0] == board[1][0] == board[2][0] != "🔳"
-    vertical2 = board[0][1] == board[1][1] == board[2][1] != "🔳"
-    vertical3 = board[0][2] == board[1][2] == board[2][2] != "🔳"
-    verticals = any([vertical1,vertical2,vertical3])
-    verticals = any([vertical1,vertical2,vertical3])
+    horizontals = ((board[0][0] == board[0][1] == board[0][2] != "🔳") or (board[1][0] == board[1][1] == board[1][2] != "🔳") or (board[2][0] == board[2][1] == board[2][2] != "🔳")) 
+    diagonals = ((board[0][0] == board[1][1] == board[2][2] != "🔳") or (board[2][0] == board[1][1] == board[0][2] != "🔳"))
+    verticals = ((board[0][0] == board[1][0] == board[2][0] != "🔳") or (board[0][1] == board[1][1] == board[2][1] != "🔳") or (board[0][2] == board[1][2] == board[2][2] != "🔳"))
     win_condition = any([verticals, horizontals, diagonals])
     if win_condition:
         winner = last_move
