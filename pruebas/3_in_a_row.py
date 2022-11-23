@@ -1,38 +1,31 @@
 # Jugador 1: ❌
 # Jugador 2: 🟢
 board = [["🔳","🔳","🔳"],["🔳","🔳","🔳"],["🔳","🔳","🔳"]]
-player1 = True
-winner = ""
-moves = 0
 playing = True
+player = "Player 1"
+moves = 0
+winner = ""
 last_move = ""
 while playing:
     for row in board:
         for column in row:
             print(column, end=" ")
         print()
-    if player1:
-        user_input = input("Player 1 choice (Ej: 3,1): ").split(",")
-        row = int(user_input[0])
-        column = int(user_input[1])
-        if 1 <= row and column <= 3 and board[row - 1][column - 1] == "🔳":
-            row -= 1; column -= 1; moves += 1
+    user_input = input(f"{player} choice (Ej: 3,1): ").split(",")
+    row = int(user_input[0])
+    column = int(user_input[1])
+    if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] == "🔳":
+        row -= 1; column -= 1; moves += 1
+        if player == "Player 1":
             board[row][column] = "❌"
-            player1 = not player1
+            player = "Player 2"
             last_move = "player 1"
         else:
-            print("Introduce a valid coordenate")
-    else:
-        user_input = input("Player 2 choice (Ej: 1,1): ").split(",")
-        row = int(user_input[0])
-        column = int(user_input[1])
-        if 1 <= row and column <= 3 and board[row - 1][column - 1] == "🔳":
-            row -= 1; column -= 1; moves += 1
             board[row][column] = "🟢"
-            player1 = not player1
+            player = "Player 1" 
             last_move = "player 2"
-        else:
-            print("Introduce a valid coordenate")
+    else:
+        print("Please introduce a valid coordenate")    
     horizontal1 = board[0][0] == board[0][1] == board[0][2] != "🔳"
     horizontal2 = board[1][0] == board[1][1] == board[1][2] != "🔳" 
     horizontal3 = board[2][0] == board[2][1] == board[2][2] != "🔳" 
@@ -50,7 +43,7 @@ while playing:
         winner = last_move
         playing = False
     elif moves == 9:
-        winner = "None"
+        winner = "None, it's a tie"
         playing = False
 for row in board:
         for column in row:
