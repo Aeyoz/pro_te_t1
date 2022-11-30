@@ -6,6 +6,7 @@ player = "Player 1"
 moves = 0                                                                                                                         # All the needed variables for the program 
 winner = ""
 last_move = ""
+
 while playing:
     for row in board:
         for column in row:
@@ -24,13 +25,14 @@ while playing:
             board[row][column] = "🟢"
             player = "Player 1" 
             last_move = "Player 2"
-    else:                                                                                                                          # In case the player move's not valid, this part
-        if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] != "🔳" and len(play) == 2:                           # displays an error message depending on it`s cause
-            print(f"This box is ocupied by {board[row - 1][column - 1]}")
-        elif (1 > row or row > 3) and (1 > column or column > 3) and board[row - 1][column - 1] == "🔳" and len(play) == 2:
-            print(f"The coordenate: ({row},{column}) is out of the board")
+    else:
+        if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] != "🔳" and len(play) == 2:
+            error = f"This box is ocupied by {board[row - 1][column - 1]}."
         elif len(play) > 2:
-            print("Your move is longer than expected")    
+            error = f"The format of your play: {','.join(play)} isn't correct, pleas, introduce one like this: 1,2."
+        elif (1 > row or row > 3) or (1 > column or column > 3):
+            error = f"Your play {row},{column} is out of the bounds of the board."  
+        print(error)  
     # These three next lines decide whether the player wins by making a 3 in a row in a horizontal, vertical or diagonal way.
     horizontals = ((board[0][0] == board[0][1] == board[0][2] != "🔳") or (board[1][0] == board[1][1] == board[1][2] != "🔳") or (board[2][0] == board[2][1] == board[2][2] != "🔳")) 
     diagonals = ((board[0][0] == board[1][1] == board[2][2] != "🔳") or (board[2][0] == board[1][1] == board[0][2] != "🔳"))
@@ -43,6 +45,7 @@ while playing:
     elif not win_condition and moves == 9:
         winner = "None, it's a tie"
         playing = False
+
 for row in board:
         for column in row:
             print(column, end=" ")
