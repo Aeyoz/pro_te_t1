@@ -31,7 +31,7 @@ while playing:
         elif len(play) > 2:
             error = f"The format of your play: {','.join(play)} isn't correct, pleas, introduce one like this: 1,2."
         elif (1 > row or row > 3) or (1 > column or column > 3):
-            error = f"Your play {row},{column} is out of the bounds of the board."  
+            error = f"Your play: {row},{column} is out of the bounds of the board."  
         print(error)  
     # These three next lines decide whether the player wins by making a 3 in a row in a horizontal, vertical or diagonal way.
     horizontals = ((board[0][0] == board[0][1] == board[0][2] != "🔳") or (board[1][0] == board[1][1] == board[1][2] != "🔳") or (board[2][0] == board[2][1] == board[2][2] != "🔳")) 
