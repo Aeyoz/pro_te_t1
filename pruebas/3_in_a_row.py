@@ -7,6 +7,16 @@ moves = 0                                                                       
 winner = ""
 last_move = ""
 
+while (rules := input('''These are the rules for the Tic Tac Toe game:
+
+1. You may place your symbol between the coordenates 1,1 and 3,3, in that same format.
+2. You cannot place your symbol on a box that has been previously ocupied by the other player.
+3. If you lose, please buy some candy for the winner (optional).
+
+Introduce [y] or [s] to accept the rules, or [n] to reject them.
+Your choice: ''')).lower() not in "ys":
+    print("You must accept the rules to play")
+
 while playing:
     for row in board:
         for column in row:
