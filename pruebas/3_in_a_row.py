@@ -6,21 +6,22 @@ player = "Player 1"
 moves = 0                                                                                                                         # All the needed variables for the program 
 winner = ""
 last_move = ""
+accept_rules = ["s","y","yes", "si"]
 
 while (rules := input('''These are the rules for the Tic Tac Toe game:
-
+    
 1. You may place your symbol between the coordenates 1,1 and 3,3, in that same format.
 2. You cannot place your symbol on a box that has been previously ocupied by the other player.
 3. If you lose, please buy some candy for the winner (optional).
 
 Introduce [y] or [s] to accept the rules, or [n] to reject them.
-Your choice: ''')).lower() not in "ys":
+Your choice: ''')).lower() not in accept_rules:
     print("You must accept the rules to play")
 
 while playing:
     for row in board:
         for column in row:
-            print(column, end=" ")
+            print(column, end="")
         print()
     play = input(f"{player} choice (Ej: 3,1): ").split(",")
     row = int(play[0])
@@ -39,7 +40,7 @@ while playing:
         if 1 <= row <= 3 and 1 <= column <= 3 and board[row - 1][column - 1] != "🔳" and len(play) == 2:
             error = f"This box is ocupied by {board[row - 1][column - 1]}."
         elif len(play) > 2:
-            error = f"The format of your play: {','.join(play)} isn't correct, pleas, introduce one like this: 1,2."
+            error = f"The format of your play: {','.join(play)} isn't correct, please, introduce one like this: 1,2."
         elif (1 > row or row > 3) or (1 > column or column > 3):
             error = f"Your play: {row},{column} is out of the bounds of the board."  
         print(error)  
@@ -55,9 +56,8 @@ while playing:
     elif not win_condition and moves == 9:
         winner = "None, it's a tie"
         playing = False
-
 for row in board:
-        for column in row:
-            print(column, end=" ")
-        print()
+    for column in row:
+        print(column, end="")
+    print()
 print(f"And the winner is: {winner}")

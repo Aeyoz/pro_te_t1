@@ -77,4 +77,4 @@ while playing:
                     winner = "player2"
             case _:                                                                                                   # Tie
                 winner = "None"
-                break
+                break            
