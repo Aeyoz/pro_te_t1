@@ -75,4 +75,4 @@ for row in board:
     for column in row:
         print(column, end=" ")
     print()
-print(f"And the winner is: {winner}")
+print(f"And the winner is: {winner}"
